@@ -4,14 +4,14 @@ go 1.17
 
 require (
 	github.com/gin-gonic/gin v1.8.1
-	github.com/go-delve/delve v1.8.3
+	github.com/golang/mock v1.6.0
 	github.com/lib/pq v1.10.6
 	github.com/spf13/viper v1.12.0
 	github.com/stretchr/testify v1.7.4
 )
 
 require (
-	github.com/davecgh/go-spew v1.1.1 // indirect
+	github.com/davecgh/go-spew v1.1.1 // indirect; indirects
 	github.com/fsnotify/fsnotify v1.5.4 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
 	github.com/go-playground/locales v0.14.0 // indirect
