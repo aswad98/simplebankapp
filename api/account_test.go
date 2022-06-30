@@ -71,12 +71,11 @@ func TestGetAccountApi(t *testing.T) {
 		},
 		{
 			name:      "InvalidID",
-			accountID: account.ID,
+			accountID: 0,
 			buildStubs: func(store *mockdb.MockStore) {
 				store.EXPECT().
 					GetAccount(gomock.Any(), gomock.Any()).
-					Times(0).
-					Return(db.Account{}, sql.ErrConnDone)
+					Times(0)
 
 			},
 			checkRespone: func(t *testing.T, recorder *httptest.ResponseRecorder) {
