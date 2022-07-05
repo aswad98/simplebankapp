@@ -14,11 +14,11 @@ func TestPassword(t *testing.T) {
 	require.NoError(t, err)
 	require.NotEmpty(t, hashedpassword)
 
-	err = checkPassword(hashedpassword, password)
+	err = CheckPassword(hashedpassword, password)
 	require.NoError(t, err)
 
 	wrongPassword := RandomString(6)
-	err = checkPassword(hashedpassword, wrongPassword)
+	err = CheckPassword(hashedpassword, wrongPassword)
 	require.EqualError(t, err, bcrypt.ErrMismatchedHashAndPassword.Error())
 
 }
