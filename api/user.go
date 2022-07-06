@@ -2,6 +2,7 @@ package api
 
 import (
 	"database/sql"
+	"fmt"
 	"net/http"
 	"time"
 
@@ -39,6 +40,11 @@ func (server *Server) creatUser(ctx *gin.Context) {
 	var req creatUserRequest
 	if err := ctx.ShouldBindJSON(&req); err != nil {
 		ctx.JSON(http.StatusBadRequest, errorResponse(err))
+	}
+	if len(req.Password) < 6 {
+		err := fmt.Errorf("length of password is too short %s", req.Password)
+		ctx.JSON(http.StatusForbidden, errorResponse(err))
+
 	}
 	hashedPassword, err := util.HashedPassword(req.Password)
 	if err != nil {
